@@ -12,7 +12,7 @@ public class TaskTest {
         int expected = 1;
         int actual = task.getId();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -24,20 +24,20 @@ public class TaskTest {
         String expected = "Позвонить родителям";
         String actual = simpleTask.getTitle();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
 
     public void searchEpic() {
 
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
 
         String[] expected = {"Молоко", "Яйца", "Хлеб"};
         String[] actual = epic.getSubtasks();
 
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class TaskTest {
         String expected = "Бета тестирование приложения НетоБанк";
         String actual = meeting.getTopic();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class TaskTest {
         String expected = "Приложение НетоБанк";
         String actual = meeting.getProject();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -88,19 +88,19 @@ public class TaskTest {
         String expected = "Во вторник после обеда";
         String actual = meeting.getStart();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
 
     public void simpleTaskMatchesTestingFalse() {
 
-       Task simpleTask = new SimpleTask(5, "Позвонить родителям");
+        Task simpleTask = new SimpleTask(5, "Позвонить родителям");
 
-       boolean expected = false;
-       boolean actual = simpleTask.matches("Банк");
+        boolean expected = false;
+        boolean actual = simpleTask.matches("Банк");
 
-       Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class TaskTest {
 
     public void epicMatchesTestingFalse() {
 
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Task epic = new Epic(55, subtasks);
 
         boolean expected = false;
@@ -132,7 +132,7 @@ public class TaskTest {
 
     public void epicMatchesTestingTrue() {
 
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Task epic = new Epic(55, subtasks);
 
         boolean expected = true;
