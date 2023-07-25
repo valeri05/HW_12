@@ -31,7 +31,7 @@ public class TodosTest {
 
     @Test
 
-    public void searchTestingFound() {
+    public void searchTestingFoundInAllTasks() {
 
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить менеджеру в Банк");
 
@@ -41,7 +41,7 @@ public class TodosTest {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
-                "Приложение НетоБанк",
+                "Приложение Нето Банк",
                 "Во вторник после обеда"
         );
 
@@ -80,6 +80,33 @@ public class TodosTest {
 
         Task[] expected = {};
         Task[] actual = todos.search("Ипотека");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+
+    public void searchTestingFoundOneTask() {
+
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить менеджеру в Банк");
+
+        String[] subtasks = {"Банк", "Вклад", "Кредит"};
+        Epic epic = new Epic(55, subtasks);
+
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанк",
+                "Во вторник после обеда"
+        );
+
+        Todos todos = new Todos();
+
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
+
+        Task[] expected = {epic};
+        Task[] actual = todos.search("Вклад");
         Assertions.assertArrayEquals(expected, actual);
     }
 }
